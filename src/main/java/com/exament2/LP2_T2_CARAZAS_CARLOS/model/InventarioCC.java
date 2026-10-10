@@ -24,29 +24,35 @@ import lombok.Setter;
 @AllArgsConstructor
 public class InventarioCC {
 
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "numero")
 	private Integer numero;
-	
-	@Column(name = " fecha_vencimiento")
+
+	@Column(name = "fecha_vencimiento")
 	private LocalDate fechaVencimiento;
-	
+
 	@Column(name = "costo_ingreso")
 	private BigDecimal costoIngreso;
-	
+
 	@Column(name = "cantidad")
 	private Integer cantidad;
-	
+
 	@Column(name = "lote")
 	private String lote;
 
 	@Column(name = "cod_estado")
 	private String codEstado;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "id_producto")
 	private ProductoCC productoCC;
-	
+
+	public String getEstadoDescripcion() {
+		if ("A".equals(codEstado)) return "Activo";
+		if ("V".equals(codEstado)) return "Vencido";
+		if ("T".equals(codEstado)) return "En tránsito";
+		if ("B".equals(codEstado)) return "Bloqueado";
+		return codEstado;
+	}
 }

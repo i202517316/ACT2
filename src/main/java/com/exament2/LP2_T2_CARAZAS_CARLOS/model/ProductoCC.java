@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name="tbl_producto")
+@Table(name = "tbl_producto")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -25,13 +25,13 @@ public class ProductoCC {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Integer id;
-	
+
 	@Column(name = "nombre")
 	private String nombre;
-	
+
 	@Column(name = "stock_actual")
 	private Integer stockActual;
-	
+
 	@Column(name = "stock_maximo")
 	private Integer stockMaximo;
 
